@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Comunicaciones from '../components/comunicaciones.astro';
+import Character from '../components/character.astro';
+import DATA from '../data/data.json';
+
+console.log(DATA);
+---
+
+<Layout>
+    <div class="app container">
+        <ul class="characters-list row list-unstyled">
+
+            {
+                //Mapeamos el array, por cada elemento renderiza un Character
+                DATA.map((item) => <Character character={item as Char}/>)
+            }
+            
+        </ul>
+    </div>
+    <Comunicaciones />
+</Layout>
+
+
+<style></style>
