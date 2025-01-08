@@ -1,0 +1,22 @@
+---
+import type { Char } from "../../types/types";
+import ThumbsUp from "../../../src/icons/thumbs-up.svg";
+import ThumbsDown from "../../../src/icons/thumbs-down.svg";
+
+type Props = {
+  age: Char["age"];
+  isAlive: Char["isAlive"];
+};
+
+const { age, isAlive } = Astro.props;
+---
+
+<div class="character__info">
+  <ul>
+    <li>Edad: {age} años</li>
+    <li>
+      Estado:
+      {isAlive ? <ThumbsUp /> : <ThumbsDown />}
+    </li>
+  </ul>
+</div>

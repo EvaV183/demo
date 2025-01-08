@@ -1,0 +1,48 @@
+---
+import type { Char } from "../../types/types";
+import Extras from "../got/extras.astro";
+import Info from "./info.astro";
+import Actions from "./actions.astro";
+import Emoji from "./emoji.astro";
+
+type Props = {
+  character: Char;
+};
+
+const { character } = Astro.props;
+
+const fullName = `${character.name} ${character.family}`;
+const image = `../src/assets/img/${character.name}.jpg`;
+const imageAlt = `Imagen de ${fullName}`;
+---
+
+<li class="character">
+  <div class="card">
+    <img src={image} alt={imageAlt} />
+    <div class="card-body">
+      <h2>{fullName}</h2>
+      <Info age={character.age} isAlive={character.isAlive} />
+      <div class="overlay">
+        <Extras character={character} />
+        <Actions />
+      </div>
+    </div>
+    <Emoji category={character.category} />
+  </div>
+</li>
+
+<style>
+  li.character {
+  }
+
+  .card {
+    position: relative;
+    border: none;
+    background-color: #331c0e;
+    color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  .character-body {
+  }
+</style>
